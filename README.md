@@ -29,19 +29,19 @@ python -m venv venv
 # Linux/Mac
 source venv/bin/activate
 
+### 2. Instalar Dependencias
 
-## ⚙️ Instalar Dependencias
 pip install -r requirements.txt
 
-## Aplicar Migrações
+### 3. Aplicar Migrações
 py manage.py makemigrations
 py manage.py migrate
 
 
-# Criar superusuario para acessar o Django Admin (opcional)
+### 4. Criar superusuario para acessar o Django Admin (opcional)
 py manage.py createsuperuser
 
-## Rodar servidor local
+### 5. Rodar servidor local
 py manage.py runserver
 
 
