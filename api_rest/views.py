@@ -11,13 +11,23 @@ from .serializers import UserSerializer
 import json
 
 
-@api_view(['GET'])
+@api_view(['GET','POST'])
 def get_users(request):
     if request.method == 'GET':
         users = User.objects.all()
         serializer = UserSerializer(users, many=True)
         return Response(serializer.data)
-    return Response(status=status.HTTP_400_BAD_REQUEST)
+    
+    elif request.method == 'POST':
+        new_user = request.data
+        serializer = UserSerializer(data=new_user)
+       
+        if serializer.is_valid():
+            serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    
+    return Response(status.HTTP_400_BAD_REQUEST)
+    
 
 
 
@@ -32,3 +42,5 @@ def get_users_by_nick(request, nick):
         return Response(serializer.data)
 
 
+
+    
