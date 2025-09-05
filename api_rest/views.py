@@ -16,6 +16,7 @@ def get_users(request):
     if request.method == 'GET':
         users = User.objects.all()
         serializer = UserSerializer(users, many=True)
+        print(request.META)
         return Response(serializer.data)
     
     elif request.method == 'POST':
